@@ -22,6 +22,6 @@ public class PessoaDto {
         cnpj = pessoa.getCnpj();
         email = pessoa.getEmail();
         modTributario = pessoa.getModTributario();
-        tipo = pessoa.getModTributario();
+        tipo = pessoa.getTipo();
     }
 }

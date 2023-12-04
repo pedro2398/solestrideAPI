@@ -20,7 +20,7 @@ public class Pessoa {
     private Long id;
 
     @NotBlank
-    @Column(name = "NOME_PESSOA" ,nullable = false)
+    @Column(name = "NM_PESSOA" ,nullable = false)
     private String nome;
 
     @NotBlank

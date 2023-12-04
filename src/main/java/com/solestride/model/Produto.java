@@ -6,8 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.LinkedHashSet;
-import java.util.Set;
 @Data
 @Entity
 @AllArgsConstructor
@@ -42,23 +40,12 @@ public class Produto {
     private String fabricante;
 
     @NotNull
-    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinTable(
-            name = "TB_PRODUTO_FORNECEDOR",
-            joinColumns = {
-                    @JoinColumn(
-                            name = "ID_PRODUTO",
-                            referencedColumnName = "ID_PRODUTO",
-                            foreignKey = @ForeignKey(name = "FK_PRODUTO_FORNECEDOR")
-                    )
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(
-                            name = "ID_PESSOA",
-                            referencedColumnName = "ID_PESSOA",
-                            foreignKey = @ForeignKey(name = "FK_FORNECEDOR_PRODUTO")
-                    )
-            }
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "ID_FORNECEDOR",
+            referencedColumnName = "ID_PESSOA",
+            foreignKey = @ForeignKey(name = "FK_PRODUTO_FORNECEDOR"),
+            nullable = false
+
     )
-    private Set<Fornecedor> fornecedores = new LinkedHashSet<>();
+    private Fornecedor fornecedores;
 }

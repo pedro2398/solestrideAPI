@@ -39,15 +39,15 @@ public class FornecedorService {
         repository.deleteById(id);
     }
 
-    public Fornecedor post(Fornecedor fornecedor) {
+    public PessoaDto post(Fornecedor fornecedor) {
         repository.save(fornecedor);
-        return fornecedor;
+        return new PessoaDto(fornecedor);
     }
 
-    public Fornecedor put(Long id, Fornecedor fornecedor) {
+    public PessoaDto put(Long id, Fornecedor fornecedor) {
         getByID(id);
         fornecedor.setId(id);
         repository.save(fornecedor);
-        return fornecedor;
+        return new PessoaDto(fornecedor);
     }
 }

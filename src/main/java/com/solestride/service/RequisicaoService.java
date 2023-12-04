@@ -7,6 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Service
 public class RequisicaoService {
 
@@ -21,8 +24,8 @@ public class RequisicaoService {
         return entity;
     }
 
-    public Page<Requisicao> get(Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<Requisicao> get(Pageable pageable) {
+        return repository.findAll(pageable).getContent();
     }
 
     public void delete(Long id) {
@@ -31,6 +34,7 @@ public class RequisicaoService {
     }
 
     public Requisicao post(Requisicao requisicao) {
+        requisicao.setData(LocalDate.now());
         repository.save(requisicao);
         return requisicao;
     }

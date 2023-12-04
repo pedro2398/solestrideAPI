@@ -7,6 +7,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProdutoService {
 
@@ -21,8 +23,8 @@ public class ProdutoService {
         return entity;
     }
 
-    public Page<Produto> get(Pageable pageable) {
-        return repository.findAll(pageable);
+    public List<Produto> get(Pageable pageable) {
+        return repository.findAll(pageable).getContent();
     }
 
     public void delete(Long id) {

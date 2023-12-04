@@ -1,6 +1,7 @@
 package com.solestride.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,26 +26,25 @@ public class Requisicao {
     @Column(name = "COD_REQUISICAO", nullable = false)
     private String codRequisicao;
 
-    @NotBlank
+    @NotNull
     @Positive
     @Column(name = "QTD_REQUISICAO", nullable = false)
     private Integer quantidade;
 
-    @NotBlank
+    @NotNull
     @Positive
     @Column(name = "TETO_REQUISICAO", nullable = false)
     private BigDecimal tetoAutomatico;
 
-    @NotBlank
     @Column(name = "DT_REQUISICAO", nullable = false)
     private LocalDate data;
 
-    @NotBlank
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
     @JoinColumn(
             name = "ID_REQ_PRODUTO",
             referencedColumnName = "ID_PRODUTO",
-            foreignKey = @ForeignKey(name = "TB_REQUISICAO_FK_PRODUTO"),
+            foreignKey = @ForeignKey(name = "FK_REQUISICAO_PRODUTO"),
             nullable = false
     )
     private Produto produto;

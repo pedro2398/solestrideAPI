@@ -2,6 +2,7 @@ package com.solestride.controller;
 
 import com.solestride.model.Produto;
 import com.solestride.service.ProdutoService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +36,13 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> post(@RequestBody Produto entity) {
+    public ResponseEntity<Produto> post(@RequestBody @Valid Produto entity) {
         log.info("Cadastrando produto");
         return ResponseEntity.status(HttpStatus.CREATED).body(service.post(entity));
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Produto> put(@PathVariable Long id, @RequestBody Produto entity) {
+    public ResponseEntity<Produto> put(@PathVariable Long id, @RequestBody @Valid Produto entity) {
         log.info("Alterando produto com id: " + id);
         return ResponseEntity.ok(service.put(id, entity));
     }

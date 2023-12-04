@@ -2,6 +2,7 @@ package com.solestride.controller;
 
 import com.solestride.model.Requisicao;
 import com.solestride.service.RequisicaoService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,13 +36,13 @@ public class RequisicaoController {
     }
 
     @PostMapping
-    public ResponseEntity<Requisicao> post(@RequestBody Requisicao entity) {
+    public ResponseEntity<Requisicao> post(@RequestBody @Valid Requisicao entity) {
         log.info("Cadastrando requisição");
         return ResponseEntity.status(HttpStatus.CREATED).body(service.post(entity));
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Requisicao> put(@PathVariable Long id, @RequestBody Requisicao entity) {
+    public ResponseEntity<Requisicao> put(@PathVariable Long id, @RequestBody @Valid Requisicao entity) {
         log.info("Alterando requisição com id: " + id);
         return ResponseEntity.ok(service.put(id, entity));
     }

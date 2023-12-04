@@ -3,6 +3,7 @@ package com.solestride.controller;
 import com.solestride.model.dto.PessoaDto;
 import com.solestride.model.pessoa.Comprador;
 import com.solestride.service.CompradorService;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +37,14 @@ public class CompradorController {
     }
 
     @PostMapping
-    public ResponseEntity<PessoaDto> post(@RequestBody Comprador entity) {
+    public ResponseEntity<PessoaDto> post(@RequestBody @Valid Comprador entity) {
         log.info("Cadastrando comprador");
         PessoaDto newEntity = service.post(entity);
         return ResponseEntity.status(HttpStatus.CREATED).body(newEntity);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<PessoaDto> put(@PathVariable Long id, @RequestBody Comprador entity) {
+    public ResponseEntity<PessoaDto> put(@PathVariable Long id, @RequestBody @Valid Comprador entity) {
         log.info("Alterando comprador com id: " + id);
         return ResponseEntity.ok(service.put(id, entity));
     }

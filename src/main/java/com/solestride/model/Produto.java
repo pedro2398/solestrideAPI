@@ -1,4 +1,5 @@
 package com.solestride.model;
+import com.solestride.model.pessoa.Fabricante;
 import com.solestride.model.pessoa.Fornecedor;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -35,9 +36,15 @@ public class Produto {
     @Column(name = "MODELO_PRODUTO", nullable = false)
     private String modelo;
 
-    @NotBlank
-    @Column(name = "FAB_PRODUTO", nullable = false)
-    private String fabricante;
+    @NotNull
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
+    @JoinColumn(name = "ID_FABRICANTE",
+            referencedColumnName = "ID_PESSOA",
+            foreignKey = @ForeignKey(name = "FK_PRODUTO_FABRICANTE"),
+            nullable = false
+
+    )
+    private Fabricante fabricante;
 
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})

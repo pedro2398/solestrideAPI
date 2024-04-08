@@ -14,7 +14,7 @@ Samuel Leite Nunes – RM 97566
 Realizamos o deploy da API em um WEBAPP no Azure. As configurações estão no arquivo pom.xml na raiz do projeto dentro da tag <build />.
 Fizemos também um CRUD de teste pelo Postman: [Solestride.postman_collection.json](https://github.com/pedro2398/solestrideAPI/files/14911592/Solestride.postman_collection.json)
 
-Escopo Do Projeto: [Solestride apresentacao.pdf](https://github.com/pedro2398/solestrideAPI/files/13553188/Solestride.apresentacao.pdf)
+Escopo Do Projeto: [Solestride.pdf](https://github.com/pedro2398/solestrideAPI/files/14911612/Solestride.pdf)
 
 Documentação da API: [Documentação API.pdf](https://github.com/pedro2398/solestrideAPI/files/13553539/Documentacao.API.pdf)
 
